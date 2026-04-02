@@ -1,4 +1,4 @@
-/* Don't think just do it — 스터디 플래너 (Realtime DB devGrind + localStorage 캐시) */
+/* Don't think just do it — 스터디 플래너 */
 
 :root {
   --bg: #fff5f8;
@@ -1275,14 +1275,6 @@ input[type="range"]::-webkit-slider-thumb {
 .hub-link:hover {
   text-decoration: underline;
   color: var(--accent);
-}
-
-.storage-note {
-  margin-top: 10px;
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  max-width: 36rem;
-  line-height: 1.5;
 }
 
 @media (max-width: 900px) {

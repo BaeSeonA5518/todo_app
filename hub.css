@@ -232,26 +232,6 @@ body.hub-page {
   transform: translateX(2px);
 }
 
-.hub-footnote {
-  margin: 2rem 0 0;
-  padding: 1rem 1.1rem;
-  font-size: 0.75rem;
-  line-height: 1.55;
-  color: var(--h-muted);
-  text-align: center;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(99, 102, 241, 0.08);
-  border-radius: 14px;
-}
-
-.hub-footnote code {
-  font-size: 0.7rem;
-  padding: 0.12rem 0.35rem;
-  border-radius: 6px;
-  background: rgba(99, 102, 241, 0.08);
-  color: var(--h-indigo);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hub-card,
   .hub-card-arrow {
