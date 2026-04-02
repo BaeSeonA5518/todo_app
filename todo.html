@@ -10,36 +10,90 @@
       type="image/svg+xml"
     />
     <link rel="stylesheet" href="todo.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { corePlugins: { preflight: false } };
+    </script>
   </head>
   <body class="todo-page">
     <div class="todo-bg" aria-hidden="true"></div>
 
     <div class="todo-app">
-      <nav class="todo-nav">
-        <a href="job-prep.html">← 취업 준비 보드</a>
-        &nbsp;·&nbsp;
-        <a href="index.html">처음</a>
+      <nav class="todo-nav flex flex-wrap items-center justify-center gap-1 text-sm">
+        <a
+          href="job-prep.html"
+          class="rounded-full px-3 py-1.5 font-semibold text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
+          >← 취업 준비 보드</a
+        >
+        <span class="text-slate-300" aria-hidden="true">·</span>
+        <a
+          href="index.html"
+          class="rounded-full px-3 py-1.5 font-semibold text-slate-600 transition hover:bg-slate-100"
+          >처음</a
+        >
       </nav>
 
       <header class="todo-header">
-        <p class="todo-eyebrow">할 일</p>
-        <h1 class="todo-title">할일 목록</h1>
+        <p
+          class="todo-eyebrow inline-flex items-center rounded-full border border-indigo-100/90 bg-white/90 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-indigo-600 shadow-sm"
+        >
+          할 일
+        </p>
+        <h1 class="todo-title mt-2">할일 목록</h1>
         <p class="todo-desc">추가 · 수정 · 삭제가 바로 반영돼요.</p>
       </header>
 
-      <p class="status-msg" id="statusMsg" role="status" hidden></p>
+      <p
+        class="status-msg rounded-xl border shadow-sm transition"
+        id="statusMsg"
+        role="status"
+        hidden
+      ></p>
+
+      <div
+        id="todoPreview"
+        class="mb-4 rounded-2xl border border-dashed border-indigo-200/90 bg-gradient-to-br from-indigo-50/90 via-white/80 to-violet-50/60 px-4 py-3 shadow-sm ring-1 ring-indigo-100/50"
+      >
+        <p
+          class="mb-2.5 text-center text-[0.68rem] font-bold uppercase tracking-[0.12em] text-indigo-500"
+        >
+          예시 · 이렇게 써보세요
+        </p>
+        <ul class="space-y-2.5 text-left text-[0.92rem] leading-snug text-slate-600">
+          <li class="flex gap-2">
+            <span class="mt-0.5 shrink-0 text-indigo-400" aria-hidden="true">○</span>
+            <span>오늘: 포트폴리오 README 한 블록만 다듬기</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-0.5 shrink-0 text-indigo-400" aria-hidden="true">○</span>
+            <span>면접 질문 1개 말로 1분 답변 연습</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-0.5 shrink-0 text-indigo-400" aria-hidden="true">○</span>
+            <span>정처기 / 코딩 중 약한 단원만 30분</span>
+          </li>
+        </ul>
+        <p class="mt-2.5 text-center text-[0.78rem] font-medium text-slate-400">
+          위 입력란에 적으면 여기 아래에 진짜 목록이 쌓여요
+        </p>
+      </div>
 
       <form class="todo-form" id="todoForm" autocomplete="off">
         <label for="todoInput" class="visually-hidden">새 할일</label>
         <input
-          class="todo-input"
+          class="todo-input rounded-xl shadow-sm transition focus:ring-2 focus:ring-indigo-500/25"
           type="text"
           id="todoInput"
           placeholder="할 일을 입력하세요"
           maxlength="200"
           required
         />
-        <button type="submit" class="btn-add">추가</button>
+        <button
+          type="submit"
+          class="btn-add rounded-xl shadow-md shadow-indigo-500/25 transition hover:shadow-lg hover:shadow-indigo-500/30 motion-safe:active:scale-[0.98] motion-reduce:active:scale-100"
+        >
+          추가
+        </button>
       </form>
 
       <ul class="todo-list" id="todoList" aria-live="polite"></ul>

@@ -13,6 +13,7 @@ const form = document.getElementById("todoForm");
 const input = document.getElementById("todoInput");
 const listEl = document.getElementById("todoList");
 const emptyEl = document.getElementById("emptyState");
+const previewEl = document.getElementById("todoPreview");
 const statusEl = document.getElementById("statusMsg");
 
 let todos = [];
@@ -39,15 +40,19 @@ function rtdbMsg(err) {
 
 function render() {
   listEl.innerHTML = "";
+  if (previewEl) {
+    previewEl.hidden = todos.length > 0;
+  }
   if (todos.length === 0) {
-    emptyEl.hidden = false;
+    emptyEl.hidden = Boolean(previewEl);
     return;
   }
   emptyEl.hidden = true;
 
   for (const item of todos) {
     const li = document.createElement("li");
-    li.className = "todo-item";
+    li.className =
+      "todo-item rounded-2xl shadow-sm ring-1 ring-slate-200/80 transition motion-safe:hover:shadow-md motion-safe:hover:ring-indigo-100";
     li.dataset.id = item.id;
 
     const textSpan = document.createElement("span");
@@ -59,13 +64,15 @@ function render() {
 
     const editBtn = document.createElement("button");
     editBtn.type = "button";
-    editBtn.className = "btn-todo btn-todo--ghost";
+    editBtn.className =
+      "btn-todo btn-todo--ghost rounded-lg px-2.5 py-1 text-xs font-semibold transition hover:bg-indigo-50";
     editBtn.textContent = "수정";
     editBtn.addEventListener("click", () => startEdit(li, item.id));
 
     const delBtn = document.createElement("button");
     delBtn.type = "button";
-    delBtn.className = "btn-todo btn-todo--danger";
+    delBtn.className =
+      "btn-todo btn-todo--danger rounded-lg px-2.5 py-1 text-xs font-semibold transition hover:brightness-95";
     delBtn.textContent = "삭제";
     delBtn.addEventListener("click", async () => {
       delBtn.disabled = true;

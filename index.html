@@ -3,52 +3,133 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>시작하기 · 일정과 공부를 한곳에</title>
+    <title>Only one · 취업·공부·할 일</title>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='10' fill='url(%23g)'/%3E%3C/svg%3E"
       type="image/svg+xml"
     />
     <link rel="stylesheet" href="hub.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: { preflight: false },
+      };
+    </script>
   </head>
   <body class="hub-page">
-    <div class="hub-bg" aria-hidden="true"></div>
+    <div class="hub-bg" aria-hidden="true">
+      <div class="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          class="hub-blob absolute -left-24 top-12 h-80 w-80 rounded-full bg-violet-400/25 blur-3xl motion-reduce:animate-none animate-pulse"
+        ></div>
+        <div
+          class="hub-blob absolute -right-16 top-36 h-72 w-72 rounded-full bg-fuchsia-300/20 blur-3xl motion-reduce:animate-none animate-pulse [animation-delay:1.25s]"
+        ></div>
+        <div
+          class="hub-blob absolute bottom-24 left-1/4 h-64 w-64 -translate-x-1/2 rounded-full bg-teal-300/20 blur-3xl motion-reduce:animate-none animate-pulse [animation-delay:2.5s]"
+        ></div>
+        <div
+          class="absolute left-[8%] top-[42%] text-2xl opacity-[0.12] motion-reduce:opacity-[0.06] select-none"
+          aria-hidden="true"
+        >
+          ✦
+        </div>
+        <div
+          class="absolute right-[12%] top-[28%] text-xl opacity-[0.1] motion-reduce:opacity-[0.05] select-none"
+          aria-hidden="true"
+        >
+          ✧
+        </div>
+      </div>
+    </div>
 
     <main class="hub-shell">
-      <header class="hub-hero">
-        <p class="hub-badge"><span class="hub-badge-dot" aria-hidden="true"></span> 오늘의 시작</p>
-        <h1 class="hub-title">필요한 걸 <span>한 번에</span> 골라요</h1>
-        <p class="hub-lead">
-          취업 준비 체크리스트, 공부 플래너, 할 일까지 — 화면만 바꿔도 이어서 쓸 수 있어요.
+      <header class="hub-hero hub-hero-animate">
+        <p class="hub-badge motion-safe:shadow-md motion-safe:shadow-indigo-500/10">
+          <span class="hub-badge-dot motion-safe:animate-pulse motion-reduce:animate-none" aria-hidden="true"></span>
+          오늘의 시작
         </p>
+        <h1 class="hub-title">
+          <span class="hub-title-word">Only one</span>
+        </h1>
+        <div class="hub-lead">
+          <p class="hub-lead-line">취업 준비 체크리스트, 공부 플래너, 할 일까지</p>
+          <p class="hub-lead-line hub-lead-line--second">화면만 바꿔도 이어서 쓸 수 있어요</p>
+        </div>
       </header>
 
-      <nav class="hub-cards" aria-label="바로가기">
-        <a class="hub-card hub-card--prep" href="job-prep.html">
+      <nav class="hub-cards hub-cards-stagger" aria-label="바로가기">
+        <a class="hub-card hub-card--prep group" href="job-prep.html">
           <span class="hub-card-icon" aria-hidden="true">🎯</span>
-          <span class="hub-card-body">
+          <div class="hub-card-body">
             <span class="hub-card-title">AI·IT 취업 준비 보드</span>
-            <span class="hub-card-desc">공고·커리큘럼에 맞춘 체크리스트로 진행 상황을 한눈에</span>
+            <p class="hub-card-desc">공고·커리큘럼에 맞춘 체크리스트로 진행 상황을 한눈에</p>
+          </div>
+          <span
+            class="hub-card-arrow inline-flex shrink-0 items-center justify-center self-center h-10 w-10 rounded-xl border border-indigo-100/90 bg-white/95 text-indigo-600 shadow-sm transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:border-indigo-200 group-hover:bg-indigo-50 group-hover:shadow-md group-hover:shadow-indigo-500/15 group-active:scale-[0.97] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-active:scale-100"
+            aria-hidden="true"
+          >
+            <svg
+              class="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
           </span>
-          <span class="hub-card-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="hub-card hub-card--grind" href="dev-grind.html">
+        <a class="hub-card hub-card--grind group" href="dev-grind.html">
           <span class="hub-card-icon" aria-hidden="true">✨</span>
-          <span class="hub-card-body">
+          <div class="hub-card-body">
             <span class="hub-card-title">Don't think just do it</span>
-            <span class="hub-card-desc">단계별 루틴, 타이머, 기록까지 — 공부 플래너</span>
+            <p class="hub-card-desc">단계별 루틴, 타이머, 기록까지 — 공부 플래너</p>
+          </div>
+          <span
+            class="hub-card-arrow inline-flex shrink-0 items-center justify-center self-center h-10 w-10 rounded-xl border border-indigo-100/90 bg-white/95 text-indigo-600 shadow-sm transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:border-indigo-200 group-hover:bg-indigo-50 group-hover:shadow-md group-hover:shadow-indigo-500/15 group-active:scale-[0.97] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-active:scale-100"
+            aria-hidden="true"
+          >
+            <svg
+              class="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
           </span>
-          <span class="hub-card-arrow" aria-hidden="true">→</span>
         </a>
 
-        <a class="hub-card hub-card--todo" href="todo.html">
+        <a class="hub-card hub-card--todo group" href="todo.html">
           <span class="hub-card-icon" aria-hidden="true">📝</span>
-          <span class="hub-card-body">
+          <div class="hub-card-body">
             <span class="hub-card-title">할 일 목록</span>
-            <span class="hub-card-desc">생각날 때 바로 적고, 수정·삭제도 간단하게</span>
+            <p class="hub-card-desc">생각날 때 바로 적고, 수정·삭제도 간단하게</p>
+          </div>
+          <span
+            class="hub-card-arrow inline-flex shrink-0 items-center justify-center self-center h-10 w-10 rounded-xl border border-indigo-100/90 bg-white/95 text-indigo-600 shadow-sm transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:border-indigo-200 group-hover:bg-indigo-50 group-hover:shadow-md group-hover:shadow-indigo-500/15 group-active:scale-[0.97] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-active:scale-100"
+            aria-hidden="true"
+          >
+            <svg
+              class="h-5 w-5 transition-transform duration-300 ease-out group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
           </span>
-          <span class="hub-card-arrow" aria-hidden="true">→</span>
         </a>
       </nav>
     </main>

@@ -12,32 +12,53 @@
       type="image/svg+xml"
     />
     <link rel="stylesheet" href="job-prep.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { corePlugins: { preflight: false } };
+    </script>
   </head>
   <body class="job-prep-page">
     <div class="job-prep-bg" aria-hidden="true"></div>
 
     <main class="app job-prep-wrap">
-      <header class="job-hero">
-        <p class="job-hero-eyebrow">취업 준비 보드</p>
-        <h1 class="job-hero-title">AI · IT 로드맵</h1>
+      <header
+        class="job-hero rounded-2xl border border-indigo-100/70 bg-white/60 px-4 py-5 shadow-md shadow-indigo-500/5 backdrop-blur-md sm:px-6"
+      >
+        <p
+          class="job-hero-eyebrow mx-auto inline-flex items-center rounded-full border border-indigo-100 bg-indigo-50/90 px-3 py-1 text-[0.72rem] font-semibold tracking-[0.12em] text-indigo-600 shadow-sm"
+        >
+          취업 준비 보드
+        </p>
+        <h1 class="job-hero-title mt-2">AI · IT 로드맵</h1>
         <p class="job-hero-sub">일정에 맞춘 체크리스트 · 여러 기기에서 이어서 쓸 수 있어요</p>
-        <p class="job-hero-extra">
-          <a href="todo.html">할일 앱</a>
-          <span aria-hidden="true"> · </span>
-          <a href="index.html">처음</a>
+        <p class="job-hero-extra mt-3 flex flex-wrap items-center justify-center gap-2 text-sm">
+          <a
+            href="todo.html"
+            class="rounded-full bg-white/90 px-3 py-1 font-semibold text-indigo-600 shadow-sm ring-1 ring-indigo-100 transition hover:bg-indigo-50"
+            >할일 앱</a
+          >
+          <span class="text-slate-300" aria-hidden="true">·</span>
+          <a
+            href="index.html"
+            class="rounded-full px-3 py-1 font-semibold text-slate-600 transition hover:bg-slate-100"
+            >처음</a
+          >
         </p>
       </header>
 
-      <p class="sync-status" id="syncStatus" role="status" hidden></p>
+      <p class="sync-status rounded-xl shadow-sm ring-1 ring-slate-200/80" id="syncStatus" role="status" hidden></p>
 
-      <div class="note-box">
+      <div class="note-box rounded-2xl shadow-md shadow-slate-500/5 ring-1 ring-slate-200/60">
         <strong>짧게만.</strong> 강사님 말씀처럼 &ldquo;취준하면서 부족한 걸 면접·탈락 피드백으로 채우기&rdquo;와
         &ldquo;최소한의 코드 기초(함수·OOP·HTTP)&rdquo;는 같이 가는 게 현실적이에요. AI가 짠 코드는
         <strong>한 줄씩 뭐 하는지</strong> 말로 설명할 수 있을 때까지가 검수의 시작입니다. Java는 백엔드 공고에서
         비중이 큰 편이라 <strong>Python으로 사고 연습 → Java 문법을 비교하며 익히기</strong> 정도면 방향 잡기에 충분해요.
       </div>
 
-      <section class="links-panel" aria-labelledby="links-heading">
+      <section
+        class="links-panel rounded-2xl shadow-md shadow-indigo-500/5 ring-1 ring-indigo-100/40"
+        aria-labelledby="links-heading"
+      >
         <h2 id="links-heading" class="links-panel-title">관심 공고 · 수강 과정</h2>
         <ul class="links-panel-list">
           <li class="links-panel-item">
@@ -73,7 +94,9 @@
         </ul>
       </section>
 
-      <div class="progress-card">
+      <div
+        class="progress-card rounded-2xl shadow-md shadow-indigo-500/5 ring-1 ring-indigo-100/50"
+      >
         <div class="progress-card-top">
           <span class="progress-card-label">전체 진행률</span>
           <span class="progress-card-pct" id="progressPct">0%</span>
@@ -87,9 +110,21 @@
 
       <div id="sectionsRoot" class="jp-sections-root"></div>
 
-      <div class="toolbar">
-        <button type="button" id="btnExport" class="toolbar-btn toolbar-btn--ghost">백업 · JSON</button>
-        <button type="button" id="btnReset" class="toolbar-btn toolbar-btn--muted">기본 할일로 초기화</button>
+      <div class="toolbar flex flex-wrap justify-center gap-2 border-t border-slate-200/70 pt-8">
+        <button
+          type="button"
+          id="btnExport"
+          class="toolbar-btn toolbar-btn--ghost rounded-full px-5 py-2.5 shadow-sm transition motion-safe:hover:scale-[1.02] motion-safe:hover:shadow-md motion-reduce:hover:scale-100"
+        >
+          백업 · JSON
+        </button>
+        <button
+          type="button"
+          id="btnReset"
+          class="toolbar-btn toolbar-btn--muted rounded-full px-5 py-2.5 shadow-sm transition motion-safe:hover:scale-[1.02] motion-reduce:hover:scale-100"
+        >
+          기본 할일로 초기화
+        </button>
       </div>
     </main>
     <script type="module" src="job-prep.js"></script>

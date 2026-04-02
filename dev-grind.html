@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로지 데스크 — 공부 플래너</title>
+    <title>Don't think just do it — 공부 플래너</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,23 +16,36 @@
       type="image/svg+xml"
     />
     <link rel="stylesheet" href="dev-grind.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { corePlugins: { preflight: false } };
+    </script>
   </head>
   <body>
-    <header class="header">
+    <header
+      class="header shadow-sm shadow-rose-900/5 ring-1 ring-rose-100/40 backdrop-blur-md"
+    >
       <div class="brand">
-        <div class="logo">로지 데스크</div>
+        <div class="logo">Don't think just do it</div>
         <div class="logo-sub">오늘의 공부를 조금씩 쌓아가요 · 기기마다 이어서 기록돼요</div>
       </div>
-      <div class="header-right">
-        <div class="date-display">
+      <div class="header-right flex flex-wrap items-center justify-end gap-3">
+        <div
+          class="date-display rounded-xl border border-rose-100/80 bg-white/70 px-3 py-2 shadow-sm"
+        >
           <div id="current-date">—</div>
           <div id="current-day">—</div>
         </div>
-        <div class="streak-badge" id="streak-badge">🌸 0일 연속</div>
+        <div
+          class="streak-badge inline-flex items-center gap-1 rounded-full border border-rose-200/90 bg-gradient-to-r from-rose-50 to-fuchsia-50/80 px-3 py-1.5 text-sm font-semibold text-rose-800 shadow-sm ring-2 ring-rose-100/90 motion-safe:transition motion-safe:hover:ring-rose-200/80"
+          id="streak-badge"
+        >
+          🌸 0일 연속
+        </div>
       </div>
     </header>
 
-    <p class="sync-status" id="syncStatus" role="status" hidden></p>
+    <p class="sync-status rounded-xl shadow-sm ring-1 ring-rose-100/80" id="syncStatus" role="status" hidden></p>
 
     <div class="main">
       <aside class="sidebar">
