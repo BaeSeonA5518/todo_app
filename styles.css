@@ -1,0 +1,246 @@
+:root {
+  --bg: #f4f1ec;
+  --surface: #fffefb;
+  --border: #e2ddd4;
+  --text: #2c2825;
+  --muted: #6b6560;
+  --accent: #3d6b5c;
+  --accent-hover: #325548;
+  --danger: #b54a3c;
+  --danger-hover: #943d32;
+  --shadow: 0 4px 24px rgba(44, 40, 37, 0.08);
+  --radius: 12px;
+  --font: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  background-image: radial-gradient(ellipse 120% 80% at 50% -20%, #e8efe9 0%, transparent 55%);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 3rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.subtitle-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.subtitle-link:hover {
+  text-decoration: underline;
+}
+
+.firebase-status {
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  text-align: left;
+  white-space: pre-line;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.firebase-status.is-error {
+  border-color: rgba(181, 74, 60, 0.45);
+  background: #fdf6f5;
+  color: #6b2e26;
+}
+
+.firebase-status.is-warn {
+  border-color: rgba(180, 140, 60, 0.45);
+  background: #fdfaf3;
+  color: #5c4a2a;
+}
+
+.add-form {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font: inherit;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--shadow), 0 0 0 3px rgba(61, 107, 92, 0.2);
+}
+
+.todo-input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.btn {
+  padding: 0.75rem 1.15rem;
+  border: none;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+}
+
+.btn-ghost:hover {
+  background: rgba(44, 40, 37, 0.06);
+  color: var(--text);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: rgba(181, 74, 60, 0.1);
+  color: var(--danger-hover);
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: enter 0.25s ease;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-item-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.todo-item-edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+
+.todo-item-edit-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(61, 107, 92, 0.25);
+}
+
+.todo-item-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.25rem;
+}
+
+.todo-item-actions .btn {
+  padding: 0.45rem 0.65rem;
+  font-size: 0.875rem;
+}
+
+.empty-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 1.5rem 0 0;
+}

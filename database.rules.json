@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "todos": {
+      ".read": true,
+      ".write": true
+    },
+    "jobPrep": {
+      ".read": true,
+      ".write": true
+    },
+    "devGrind": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
