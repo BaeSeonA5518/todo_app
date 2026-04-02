@@ -3,71 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>프로젝트 홈</title>
+    <title>시작하기 · 일정과 공부를 한곳에</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%234f46e5'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='10' fill='url(%23g)'/%3E%3C/svg%3E"
       type="image/svg+xml"
     />
-    <link rel="stylesheet" href="todo.css" />
-    <style>
-      .hub {
-        position: relative;
-        z-index: 1;
-        max-width: 420px;
-        margin: 0 auto;
-        padding: 3rem 1.25rem;
-        text-align: center;
-      }
-      .hub h1 {
-        margin: 0 0 0.5rem;
-        font-size: 1.35rem;
-        font-weight: 700;
-      }
-      .hub p {
-        margin: 0 0 1.75rem;
-        font-size: 0.9rem;
-        color: var(--td-muted);
-      }
-      .hub-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      .hub-links a {
-        display: block;
-        padding: 0.9rem 1rem;
-        border-radius: 14px;
-        font-weight: 600;
-        font-size: 0.92rem;
-        text-decoration: none;
-        border: 1px solid var(--td-line);
-        background: var(--td-surface);
-        box-shadow: var(--td-shadow);
-        color: var(--td-accent);
-        transition: border-color 0.15s ease, transform 0.1s ease;
-      }
-      .hub-links a:hover {
-        border-color: var(--td-accent);
-      }
-      .hub-links a:active {
-        transform: scale(0.99);
-      }
-      .hub-links a.secondary {
-        color: var(--td-muted);
-      }
-    </style>
+    <link rel="stylesheet" href="hub.css" />
   </head>
-  <body class="todo-page">
-    <div class="todo-bg" aria-hidden="true"></div>
-    <main class="hub">
-      <h1>todo-firebase</h1>
-      <p>세 페이지 모두 같은 Firebase Realtime DB 프로젝트에 연결돼요 (<code>todos</code>, <code>jobPrep</code>, <code>devGrind</code>).</p>
-      <div class="hub-links">
-        <a href="job-prep.html">AI·IT 취업 준비 보드</a>
-        <a href="dev-grind.html" class="secondary">Don't think just do it (공부 플래너)</a>
-        <a href="todo.html" class="secondary">Firebase 할일 앱</a>
-      </div>
+  <body class="hub-page">
+    <div class="hub-bg" aria-hidden="true"></div>
+
+    <main class="hub-shell">
+      <header class="hub-hero">
+        <p class="hub-badge"><span class="hub-badge-dot" aria-hidden="true"></span> 오늘의 시작</p>
+        <h1 class="hub-title">필요한 걸 <span>한 번에</span> 골라요</h1>
+        <p class="hub-lead">
+          취업 준비 체크리스트, 공부 플래너, 할 일까지 — 화면만 바꿔도 이어서 쓸 수 있어요.
+        </p>
+      </header>
+
+      <nav class="hub-cards" aria-label="바로가기">
+        <a class="hub-card hub-card--prep" href="job-prep.html">
+          <span class="hub-card-icon" aria-hidden="true">🎯</span>
+          <span class="hub-card-body">
+            <span class="hub-card-title">AI·IT 취업 준비 보드</span>
+            <span class="hub-card-desc">공고·커리큘럼에 맞춘 체크리스트로 진행 상황을 한눈에</span>
+          </span>
+          <span class="hub-card-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="hub-card hub-card--grind" href="dev-grind.html">
+          <span class="hub-card-icon" aria-hidden="true">✨</span>
+          <span class="hub-card-body">
+            <span class="hub-card-title">Don't think just do it</span>
+            <span class="hub-card-desc">단계별 루틴, 타이머, 기록까지 — 공부 플래너</span>
+          </span>
+          <span class="hub-card-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="hub-card hub-card--todo" href="todo.html">
+          <span class="hub-card-icon" aria-hidden="true">📝</span>
+          <span class="hub-card-body">
+            <span class="hub-card-title">할 일 목록</span>
+            <span class="hub-card-desc">생각날 때 바로 적고, 수정·삭제도 간단하게</span>
+          </span>
+          <span class="hub-card-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+
+      <p class="hub-footnote">
+        데이터는 <strong>Firebase</strong> Realtime Database에 저장돼요. 같은 프로젝트의
+        <code>todos</code> · <code>jobPrep</code> · <code>devGrind</code> 노드를 씁니다.
+      </p>
     </main>
   </body>
 </html>

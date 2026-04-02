@@ -138,7 +138,27 @@ function defaultState() {
       tasks,
     });
   }
-  return { sections, version: 2 };
+  return {
+    sections,
+    version: 2,
+    expandedSectionId: sections[0]?.id ?? null,
+  };
+}
+
+function ensureExpandedSectionId() {
+  if (!state.sections?.length) return;
+  if (!Object.prototype.hasOwnProperty.call(state, "expandedSectionId")) {
+    state.expandedSectionId = state.sections[0].id;
+    return;
+  }
+  const ids = new Set(state.sections.map((s) => s.id));
+  if (state.expandedSectionId != null && !ids.has(state.expandedSectionId)) {
+    state.expandedSectionId = state.sections[0].id;
+  }
+}
+
+function sectionDoneCount(sec) {
+  return sec.tasks.filter((x) => x.done).length;
 }
 
 function loadStateFromLocalOnly() {
@@ -204,26 +224,68 @@ function updateProgress() {
 }
 
 function render() {
+  ensureExpandedSectionId();
   root.innerHTML = "";
   for (const sec of state.sections) {
-    const block = document.createElement("div");
-    block.className = "section-block section-card";
-    block.dataset.sectionId = sec.id;
+    const total = sec.tasks.length;
+    const done = sectionDoneCount(sec);
+    const isOpen = state.expandedSectionId === sec.id;
+    const panelId = `jp-panel-${sec.id}`;
 
-    const head = document.createElement("div");
-    head.className = "section-head";
-    head.innerHTML = `<h2 class="section-title">${escapeHtml(sec.title)}</h2><span class="section-meta">${escapeHtml(sec.meta)}</span>`;
-    block.appendChild(head);
+    const acc = document.createElement("div");
+    acc.className = "jp-accordion";
+    acc.dataset.sectionId = sec.id;
+
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "jp-accordion-trigger" + (isOpen ? " is-open" : "");
+    trigger.setAttribute("aria-expanded", String(isOpen));
+    trigger.setAttribute("aria-controls", panelId);
+
+    const main = document.createElement("span");
+    main.className = "jp-accordion-main";
+    const titleEl = document.createElement("span");
+    titleEl.className = "jp-accordion-title";
+    titleEl.textContent = sec.title;
+    const metaEl = document.createElement("span");
+    metaEl.className = "jp-accordion-meta";
+    metaEl.textContent = sec.meta;
+    main.append(titleEl, metaEl);
+
+    const right = document.createElement("span");
+    right.className = "jp-accordion-right";
+    const stat = document.createElement("span");
+    stat.className = "jp-accordion-stat";
+    stat.textContent = total ? `완료 ${done} / ${total}` : "항목 없음";
+    const chev = document.createElement("span");
+    chev.className = "jp-accordion-chev";
+    chev.setAttribute("aria-hidden", "true");
+    right.append(stat, chev);
+
+    trigger.append(main, right);
+    trigger.addEventListener("click", () => {
+      state.expandedSectionId = state.expandedSectionId === sec.id ? null : sec.id;
+      saveState(state);
+      render();
+    });
+
+    const panel = document.createElement("div");
+    panel.className = "jp-accordion-panel";
+    panel.id = panelId;
+    panel.hidden = !isOpen;
+
+    const inner = document.createElement("div");
+    inner.className = "jp-accordion-panel-inner";
 
     for (const task of sec.tasks) {
-      block.appendChild(taskRowEl(sec.id, task));
+      inner.appendChild(taskRowEl(sec.id, task));
     }
 
     const addWrap = document.createElement("div");
     addWrap.className = "add-row";
     const inp = document.createElement("input");
     inp.type = "text";
-    inp.placeholder = "이 섹션에 할 일 추가";
+    inp.placeholder = "이 카테고리에 할 일 추가";
     inp.maxLength = 300;
     inp.setAttribute("aria-label", `${sec.title}에 할 일 추가`);
     const btn = document.createElement("button");
@@ -243,9 +305,11 @@ function render() {
       if (e.key === "Enter") btn.click();
     });
     addWrap.append(inp, btn);
-    block.appendChild(addWrap);
+    inner.appendChild(addWrap);
 
-    root.appendChild(block);
+    panel.appendChild(inner);
+    acc.append(trigger, panel);
+    root.appendChild(acc);
   }
   updateProgress();
 }
@@ -331,6 +395,9 @@ onValue(
     const remote = snap.val();
     if (snap.exists() && remote?.sections && Array.isArray(remote.sections)) {
       state = remote;
+      if (!Object.prototype.hasOwnProperty.call(state, "expandedSectionId")) {
+        state.expandedSectionId = state.sections[0]?.id ?? null;
+      }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       showSyncStatus("", false);
       render();

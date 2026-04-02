@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
+
+:root {
+  --h-ink: #1a1d2e;
+  --h-ink-soft: #4a5068;
+  --h-muted: #7c8299;
+  --h-surface: rgba(255, 255, 255, 0.78);
+  --h-surface-solid: #ffffff;
+  --h-line: rgba(99, 102, 241, 0.12);
+  --h-indigo: #4f46e5;
+  --h-indigo-soft: #eef2ff;
+  --h-teal: #0d9488;
+  --h-teal-soft: #ecfdf7;
+  --h-rose: #e11d48;
+  --h-rose-soft: #fff1f2;
+  --h-amber: #d97706;
+  --h-amber-soft: #fffbeb;
+  --h-radius: 22px;
+  --h-shadow: 0 4px 24px rgba(30, 27, 75, 0.06);
+  --h-shadow-hover: 0 12px 40px rgba(79, 70, 229, 0.12);
+  --h-font: "Noto Sans KR", "Inter", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.hub-page {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--h-font);
+  font-size: 17px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  color: var(--h-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.hub-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(165deg, #f8f7ff 0%, #fef7fb 38%, #f0fdf9 100%);
+}
+
+.hub-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 85% 65% at 8% 12%, rgba(129, 140, 248, 0.35), transparent 52%),
+    radial-gradient(ellipse 70% 55% at 92% 8%, rgba(244, 114, 182, 0.22), transparent 48%),
+    radial-gradient(ellipse 60% 50% at 50% 95%, rgba(45, 212, 191, 0.18), transparent 50%),
+    radial-gradient(circle 320px at 75% 45%, rgba(251, 191, 36, 0.08), transparent 100%);
+}
+
+.hub-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hub-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 3.25rem) 1.35rem 2.5rem;
+}
+
+.hub-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hub-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  margin: 0 0 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--h-indigo);
+  background: var(--h-indigo-soft);
+  border-radius: 999px;
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.hub-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.hub-title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.65rem, 5.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: var(--h-ink);
+}
+
+.hub-title span {
+  background: linear-gradient(120deg, var(--h-indigo) 0%, #7c3aed 45%, #db2777 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hub-lead {
+  margin: 0 auto;
+  max-width: 34ch;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--h-ink-soft);
+  line-height: 1.6;
+}
+
+.hub-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hub-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--h-surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--h-line);
+  border-radius: var(--h-radius);
+  box-shadow: var(--h-shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hub-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--h-shadow-hover);
+  border-color: rgba(99, 102, 241, 0.22);
+}
+
+.hub-card:active {
+  transform: translateY(-1px);
+}
+
+.hub-card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  border-radius: 14px;
+}
+
+.hub-card--prep .hub-card-icon {
+  background: var(--h-indigo-soft);
+  border: 1px solid rgba(99, 102, 241, 0.12);
+}
+
+.hub-card--grind .hub-card-icon {
+  background: var(--h-rose-soft);
+  border: 1px solid rgba(225, 29, 72, 0.1);
+}
+
+.hub-card--todo .hub-card-icon {
+  background: var(--h-teal-soft);
+  border: 1px solid rgba(13, 148, 136, 0.12);
+}
+
+.hub-card-body {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.hub-card-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--h-ink);
+}
+
+.hub-card-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--h-muted);
+  line-height: 1.45;
+}
+
+.hub-card-arrow {
+  flex-shrink: 0;
+  align-self: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  color: var(--h-indigo);
+  font-size: 1rem;
+  transition: background 0.15s ease, transform 0.2s ease;
+}
+
+.hub-card:hover .hub-card-arrow {
+  background: var(--h-indigo-soft);
+  transform: translateX(2px);
+}
+
+.hub-footnote {
+  margin: 2rem 0 0;
+  padding: 1rem 1.1rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--h-muted);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(99, 102, 241, 0.08);
+  border-radius: 14px;
+}
+
+.hub-footnote code {
+  font-size: 0.7rem;
+  padding: 0.12rem 0.35rem;
+  border-radius: 6px;
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--h-indigo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-card,
+  .hub-card-arrow {
+    transition: none;
+  }
+  .hub-card:hover {
+    transform: none;
+  }
+  .hub-card:hover .hub-card-arrow {
+    transform: none;
+  }
+}

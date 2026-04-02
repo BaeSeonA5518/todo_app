@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap");
 
 :root {
-  --td-ink: #1c1d26;
-  --td-muted: #6b6d7c;
+  --td-ink: #14151c;
+  --td-muted: #5c6170;
   --td-line: #e4e6ef;
   --td-surface: #ffffff;
   --td-bg: #f6f7fb;
@@ -12,7 +12,7 @@
   --td-danger: #dc2626;
   --td-radius: 16px;
   --td-shadow: 0 1px 2px rgba(28, 29, 38, 0.04), 0 8px 28px rgba(28, 29, 38, 0.08);
-  --td-font: "Plus Jakarta Sans", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --td-font: "Noto Sans KR", "Inter", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
 }
 
 *,
@@ -25,11 +25,12 @@ body.todo-page {
   margin: 0;
   min-height: 100vh;
   font-family: var(--td-font);
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.65;
   color: var(--td-ink);
   background: var(--td-bg);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 .todo-bg {
@@ -89,7 +90,8 @@ body.todo-page {
 
 .todo-desc {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--td-muted);
 }
 
@@ -104,8 +106,8 @@ body.todo-page {
 .status-msg {
   margin: 0 0 1rem;
   padding: 0.75rem 1rem;
-  font-size: 0.85rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.55;
   border-radius: 12px;
   border: 1px solid var(--td-line);
   background: var(--td-surface);
@@ -136,7 +138,7 @@ body.todo-page {
   border: 1px solid var(--td-line);
   border-radius: 12px;
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   background: var(--td-surface);
   box-shadow: var(--td-shadow);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -210,7 +212,8 @@ body.todo-page {
 .todo-text {
   flex: 1;
   min-width: 0;
-  font-size: 0.92rem;
+  font-size: 1rem;
+  line-height: 1.6;
   word-break: break-word;
 }
 

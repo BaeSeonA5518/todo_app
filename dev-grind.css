@@ -14,17 +14,17 @@
   --accent2: #e8a090;
   --accent3: #9b8fd9;
   --accent3-dim: #8578c9;
-  --text: #4a3f47;
-  --text-muted: #8f7a86;
+  --text: #3a3238;
+  --text-muted: #6d6269;
   --red: #e07080;
   --yellow: #e8c468;
   --phase1: #7bc9a8;
   --phase2: #9aa8ef;
   --phase3: #f0a088;
   --phase4: #e8c878;
-  --font-display: "Quicksand", "Noto Sans KR", sans-serif;
-  --font-mono: "DM Sans", "Noto Sans KR", sans-serif;
-  --font-sans: "Noto Sans KR", system-ui, sans-serif;
+  --font-display: "Noto Sans KR", "Inter", system-ui, sans-serif;
+  --font-mono: "DM Sans", "Noto Sans KR", system-ui, sans-serif;
+  --font-sans: "Noto Sans KR", "Inter", system-ui, sans-serif;
   --radius: 14px;
   --radius-lg: 20px;
   --shadow-sm: 0 2px 12px rgba(212, 132, 154, 0.08);
@@ -61,9 +61,12 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
+  font-size: 17px;
   min-height: 100vh;
   overflow-x: hidden;
-  line-height: 1.55;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 .sync-status {
@@ -73,7 +76,8 @@ body {
   margin: 0 auto 12px;
   padding: 10px 16px;
   border-radius: var(--radius);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
   background: var(--surface2);
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -137,10 +141,12 @@ body::after {
 
 .logo-sub {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-muted);
   letter-spacing: 0.02em;
+  line-height: 1.5;
+  max-width: 22rem;
 }
 
 .header-right {
@@ -563,20 +569,21 @@ body::after {
 }
 
 .task-title {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 4px;
+  line-height: 1.4;
 }
 
 .task-desc {
-  font-size: 0.76rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 .task-time {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--text-muted);
   text-align: right;
@@ -584,7 +591,7 @@ body::after {
 }
 
 .task-duration {
-  font-size: 0.86rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text);
 }
@@ -620,16 +627,18 @@ body::after {
 }
 
 .motto-text {
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   font-weight: 700;
   flex: 1;
   color: var(--text);
+  line-height: 1.55;
 }
 
 .motto-sub {
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   margin-top: 3px;
+  line-height: 1.5;
 }
 
 .timer-section {
